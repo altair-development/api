@@ -1,0 +1,45 @@
+section#createMatchingTicketDlg.hide
+    include ../error
+    section.playTitle
+        p プレイタイトル
+        ul
+    include searchMixins
+    +loadSearch('opponent', 'Opponent', '対戦相手', null, true)
+    label 開始日
+    input.datepick_start(type='text' name='start_date' id='')
+    label 終了日
+    input.datepick_end(type='text' name='end_date' id='')
+    label 返信期日
+    input.datepick_limit(type='text' name='limit_date' id='')
+
+    p 説明
+    div.descriptionEditor
+    include searchMixins
+    +loadSearch('entryMember', 'EntryMember', '参加メンバー', null, true)
+    include searchMixins
+    +loadSearch('watcher', 'Watcher', 'ウォッチャー', null, true)
+    section.shoulder
+        p 担当者
+        ul
+    section.status
+        p ステータス
+        ul
+            each val, index in constant.status_matching_create
+                li
+                    -let clss = index == constant.tracker_match ? 'active' : '';
+                    a(href='javascript:void(0)' sys_data=index class=clss) #{val}
+    section.live
+        p 配信
+        ul
+            each val, index in constant.live
+                li
+                    -let clss = index == constant.live_no ? 'active' : '';
+                    a(href='javascript:void(0)' sys_data=index class=clss) #{val}
+        section.live_url.hide
+            input#live-url(type='text' name='live_url')
+    section.submitArea
+        button.submit(type='button')
+            span.text 作成
+            include ../loader
+        button.cancel(type='button')
+            span.text キャンセル

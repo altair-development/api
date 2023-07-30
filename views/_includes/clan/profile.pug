@@ -1,0 +1,40 @@
+section#profile.clanTabArea.clearfix
+    section.owner.hide
+        section.profileLeft.float-left
+            section.profileImg
+                section.imageArea
+                    section.image(style='width: 180px;height: 180px;')
+                    section.dd.hide(style='width: 180px;height: 180px;')
+                        label.img_upload_label(for='image') ファイルを選択する
+                        input#image.hide(type='file' name='')
+                    section
+                        include ../loader
+                        include ../error
+        section.profileRight.float-right
+            include searchMixins
+            +loadSearch('playTitles', 'PlayTitles', 'プレイタイトル', true)
+            include searchMixins
+            +loadSearch('member', 'Member', 'メンバー')
+            section.description
+                p 説明
+                    include ../loader
+                include ../error
+                #editor
+    section.notOwner.hide
+        p is not owner
+        section.profileLeft.float-left
+            section.profileImg
+                section.imageArea
+                    section.image(style='width: 180px;height: 180px;')
+        section.profileRight.float-right
+            section.playTitles
+                p プレイタイトル
+                section.searchAreaResult
+                    ul.clearfix
+            section.member
+                p メンバー
+                section.searchAreaResult
+                    ul.clearfix
+            section.description
+                iframe(sandbox='allow-same-origin allow-popups allow-top-navigation')
+

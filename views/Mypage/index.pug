@@ -1,0 +1,16 @@
+extends layout
+
+block content
+	section#container.clearfix
+		include ../_includes/sidebar
+		.contents.clearfix
+			input(type='hidden', name='auth_id', value=auth_id)
+			input(type='hidden', name='auth_name', value=auth_name)
+			input(type='hidden', name='first_request', value='1')
+			input(type='hidden', name='request_url', value='')
+			include ../_includes/csrf
+			include ../_includes/home
+			include ../_includes/tabs
+			include ../_includes/ticket/list
+			include ../_includes/clan/index
+			include ../_includes/dlg/invite

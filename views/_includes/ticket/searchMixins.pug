@@ -1,0 +1,14 @@
+mixin loadSearch(clss, search_id, label, step_id, no_load, createBtn)
+    -let propStepId = step_id ? ' step_id=' + step_id : '';
+    <section class="#{clss}" search_id="#{search_id}" no_hide="true"#{propStepId}>
+        p #{label}を検索
+        unless no_load
+            include ../loader
+            include ../error
+        include ../searchAreaMixins
+        +loadSearchArea(createBtn ? createBtn : false, true)
+        section.searchAreaResult
+            ul.list.clearfix
+            unless no_load
+                img.loader(src=constant.img_path + 'circular_20x20.gif' alt='更新中')
+    </section>

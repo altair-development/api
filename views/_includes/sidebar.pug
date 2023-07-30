@@ -1,0 +1,15 @@
+nav#sidebar
+	form#create(method='post', accept-charset='utf-8', action='/mypages/index')
+		ul
+			li.home
+				-
+					let url = [
+						'#' + constant.CNTR + constant.SEPARATOR2 + constant.CNTR_HOME,
+						constant.ACTN + constant.SEPARATOR2 + constant.ACTN_HOME_DEF
+					].join(constant.SEPARATOR1);
+				a(href=url) ホーム
+			li#newClan.hide(sys_data='true')
+				input#name(type='text', name='name')
+			li
+				a#createClan(href='javascript:void(0);') 新しいクラン
+	include dlg/createProjectDlg

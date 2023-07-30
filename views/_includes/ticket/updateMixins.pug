@@ -1,0 +1,146 @@
+mixin loadUpdate(tracker)
+    - const en_texts = ['Matching', 'Working', 'Notification'];
+    - let tplId = 'update' + en_texts[tracker] + 'TicketTpl';
+    article(id=tplId class='updateTicketTpl hide')
+        input(type='hidden', name='ticket_id', value='')
+        header
+            if tracker === constant.tracker_match
+                section.opponent
+                    section.prof
+                        section.img
+                        section.name
+                            p.clan
+                            p.user
+                    section
+                        ul
+                            li.selectEntryMember 参加者
+                            li 配信不可
+            else
+                section.title
+                    textarea(name='title', rows='1')
+                    include ../loader
+                    include ../error
+            section.menu
+                p.reader
+                    a(href='javascript:void(0);')
+                        img(src=constant.img_path + 'reader.png', alt='メニュー')
+                ul.list.hide
+                    li
+                        a.editWatcher(href='javascript:void(0);') ウォッチャーを設定する
+        section
+            section.state
+                section
+                    section
+                        ul
+                            li.tracker
+                                input(type='hidden', name='tracker', value=tracker)
+                                | #{constant.tracker[tracker]}
+                            li.status
+                                case tracker
+                                    when constant.tracker_match
+                                        select(name='status')
+                                            each val, index in constant.status_matching
+                                                option(value=index) #{val}
+                                    when constant.tracker_work
+                                        select(name='status')
+                                            each val, index in constant.status_working
+                                                option(value=index) #{val}
+                                    when constant.tracker_notification
+                                        select(name='status')
+                                            each val, index in constant.status_notification
+                                                option(value=index) #{val}
+                                include ../loader
+                            li.period.step
+                                a.toggle(href='javascript:void(0);')
+                                    img(src=constant.img_path + 'calendar.png', alt='カレンダー')
+                                p
+                                    span.startDate
+                                    span.waveLine ～
+                                    span.endDate
+                                section.stepContent.hide(step_id='period')
+                                    p 日程
+                                    include ../error
+                                    p
+                                        input#start-date(type='text', name='start_date', placeholder='開始日')
+                                        input#end-date(type='text', name='end_date', placeholder='終了日')
+                                    section
+                                        div.datepick_start
+                                        div.datepick_end
+                                    include ../loaderBtnMixins
+                                    +loadLoaderBtn('period')
+                            if [constant.tracker_match, constant.tracker_work].indexOf(tracker) !== -1
+                                li.shoulder.step
+                                    span.exist.hide
+                                        span.user 
+                                        | が担当者です
+                                    span.notExist.hide 担当者が未定です
+                                    a.toggle(href='javascript:void(0);')
+                                        img(src=constant.img_path + 'toggle_open.gif', alt='開閉')
+                                    include searchMixins
+                                    +loadSearch('stepContent hide', 'Shoulder', '担当者', 'shoulder')
+                            if tracker === constant.tracker_work
+                                li.progressRate
+                                    section.disp
+                                        span.num %
+                                        include ../loader
+                                    section.inputArea.hide
+                                        input#progress-rate(type='text', name='progress_rate', readonly='readonly')
+                                        div.btnWrap
+                                            button.up1
+                                            button.down1
+                                        div.btnWrap
+                                            button.up10
+                                            button.down10
+                    if [constant.tracker_match, constant.tracker_work].indexOf(tracker) !== -1
+                        section
+                            ul
+                                li.limitDate.step
+                                    span 返信期日は
+                                    span.date.toggle
+                                    span です
+                                    include ../loader
+                                    section.stepContent.hide(step_id='limitDate')
+                                        div.datepick_limit
+                if tracker === constant.tracker_match
+                    section
+                        section
+                            ul
+                                li.playTitle.step
+                                    span.title
+                                    a.toggle(href='javascript:void(0);')
+                                        img(src=constant.img_path + 'toggle_open.gif', alt='開閉')
+                                    include ../loader
+                                    section.stepContent.hide(step_id='playTitle')
+                                        ul
+                                li.entryMember.step あなたのチームの参加者
+                                    a.toggle(href='javascript:void(0);')
+                                        img(src=constant.img_path + 'toggle_open.gif', alt='開閉')
+                                    include searchMixins
+                                    +loadSearch('stepContent hide', 'EntryMember', 'メンバー', 'entryMember')
+                                li.live.step あなたのチームの配信
+                                    a.toggle(href='javascript:void(0);')
+                                        img(src=constant.img_path + 'toggle_open.gif', alt='開閉')
+                                    section.stepContent.hide(step_id='live')
+                                        include ../error
+                                        p 配信を許可しますか？
+                                        ul.selection
+                                            each val, index in constant.live
+                                                li
+                                                    - let clssName = (index + '') === constant.live_no ? 'active' : '';
+                                                    a(href='javascript:void(0)' sys_data=index class=clssName)
+                                                        | #{val}
+                                        p
+                                            input#live-url(type='text' name='live_url' placeholder='URLを入力してください' style='display:none;')
+                                        include ../loaderBtnMixins
+                                        +loadLoaderBtn('live')
+            section.description
+                include ../loader
+                include ../error
+                section.descriptionEditor
+                if tracker === constant.tracker_match
+                    iframe(sandbox='allow-same-origin allow-popups allow-top-navigation')
+        footer
+            section.history
+                ul
+            section.comment
+                textarea.comment

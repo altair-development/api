@@ -1,0 +1,7 @@
+mixin loadLoaderBtn(target)
+    section.submitArea(sys_data=target)
+        button.update(type='button')
+            span.text 更新
+            include loader
+        button.cancel(type='button')
+            span.text キャンセル

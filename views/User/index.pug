@@ -1,0 +1,12 @@
+extends ../layout
+
+block content
+	h1= title
+	if message.length > 0
+		p <strong>エラーメッセージ:</strong> #{ message }
+	p Welcome to #{title}
+	form(action="/Users/login" method="POST")
+		include ../_includes/csrf
+		input(type="text" name="email" placeholder="メールアドレス")
+		input(type="password" placeholder="パスワード" name="password")
+		button(type="submit") 送信

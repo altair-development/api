@@ -1,0 +1,12 @@
+extends layout
+
+block content
+	h1= title
+	p Welcome to #{title}
+	if expressFlash.length > 0
+		p <strong>エラーメッセージ:</strong> #{ expressFlash }
+	form(action="/" method="POST")
+		include _includes/csrf
+		input(type="text" name="email" placeholder="メールアドレス")
+		input(type="password" placeholder="パスワード" name="password")
+		button(type="submit") 送信

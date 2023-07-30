@@ -1,0 +1,48 @@
+section#ticket.tabArea.clearfix
+    section.listArea
+        section
+            ul
+                li#createTicket
+                    a.newTicket(href='javascript:void(0);') 新しいチケット
+                    img.loader(src=constant.img_path + 'circular_20x20.gif', alt='更新中')
+                    span.fail
+                        img(src=constant.img_path + 'fail.png', alt='更新失敗')
+                    section.error(style='display:none;')
+                        ul
+                    section.trackerDlg.hide
+                        ul
+                            each val, index in constant.tracker
+                                li.tracker
+                                    a(href='javascript: void(0);', sys_data=index) #{val}
+                    section.inputTitle.hide
+                        input#title(type='text', name='title', placeholder='タイトルを入力')
+        section.list
+            ul
+    section.showArea
+        include updateMixins
+        +loadUpdate(constant.tracker_match)
+        +loadUpdate(constant.tracker_work)
+        +loadUpdate(constant.tracker_notification)
+    section#ticketWatcherDlg.hide
+        include searchMixins
+        +loadSearch('watcher', 'Watcher', 'ウォッチャー')
+    section#ticketResultDlg.hide
+        section.error(style='display:none')
+            ul
+        section
+            ul
+                li
+                    input#result-1(type='radio', name='result', value='0')
+                    label(for='result-1') 勝者を選択する
+                    ul.winner.hide
+                        li
+                            input#winner-1(type='radio', name='winner')
+                            label(for='winner-1')
+                        li
+                            input#winner-2(type='radio', name='winner')
+                            label(for='winner-2')
+                li
+                    input#result-2(type='radio', name='result', value='1')
+                    label(for='result-2') 引き分けた
+    include create
+    input(type='hidden', name='insert_id', value='0')

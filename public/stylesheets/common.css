@@ -1,0 +1,305 @@
+@charset "utf-8";
+
+#tabs1,#tabs2,.tabArea{
+    display:none;
+}
+
+#sidebar{
+    width: 13%;
+    float: left;
+}
+
+.contents{
+    width: 87%;
+    float: right;
+}
+
+ul{
+    margin-left: 0;
+}
+li{
+    list-style: none;
+}
+
+.error{
+    color: red;
+}
+
+.float-left{
+    float: left;
+}
+
+.float-right{
+    float: right;
+}
+.pageActive,.clanActive,.tabActive{
+    font-weight: bold;
+}
+
+.loader, .success, .fail, span.error{
+    display:none;
+}
+
+span.error{
+    background: #fff;
+    color: red;
+}
+
+.searchOutput{
+    border: 1px solid #333;
+}
+
+.searchAreaResult li{
+    float: left;
+    margin-left: 15px;
+}
+
+.memberList li:first-child{
+    margin-left: 0px;
+}
+
+.img_upload_label{
+    color: #fff;
+    background-color: deepskyblue;
+    padding: 10px;
+    border: double 4px dodgerblue;
+    width: 160px;
+}
+
+a.active{
+    color: #f08a24;
+}
+
+.ql-container,.ql-editor{
+    height: auto !important;
+}
+
+/*
+SIDEBAR
+ */
+#sidebar .invite{
+    background-color: #1cc7ff;
+}
+
+/*
+CLAN
+ */
+.clanTabArea{
+    display:none;
+}
+
+.profileLeft{
+    width: 20%;
+}
+
+.profileRight{
+    width: 80%;
+}
+
+.imageArea{
+    position: relative;
+    width: 180px;
+}
+
+.imageArea .image img{
+    min-width: 180px;
+    height: auto;
+}
+
+.dd{
+    position: absolute;
+    top: 0;
+    left: 0;
+    border: 4px dashed grey;
+}
+
+/*
+TICKET
+ */
+#ticket{
+    height: 400px;
+}
+#ticket .listArea{
+    width: 49%;
+    height: 100%;
+    float: left;
+    border: 1px solid #ccc;
+}
+#ticket .showArea{
+    width: 49%;
+    height: 100%;
+    float: right;
+    border: 1px solid #ccc;
+    overflow: scroll;
+}
+
+#ticket .list li .user,
+#ticket .list li .tracker,
+#ticket .list li .status,
+#ticket .list li .shoulder{
+    width: 10%;
+    float: left;
+}
+
+#ticket .list li .title,
+#ticket .list li .period{
+    width: 30%;
+    float: left;
+}
+
+.trackerDlg ul{
+    width: 100%;
+    margin-left: 0;
+}
+
+.trackerDlg ul .tracker a{
+    display: inline-block;
+    width: 100%;
+}
+
+.trackerDlg ul .tracker a:hover{
+    background-color: aliceblue;
+}
+
+/*
+チケットテンプレート（更新）
+ */
+.searchOutput img,
+.searchAreaResult img,
+.updateTicketTpl .history img,
+.updateTicketTpl .shoulder .user img,
+#ticket .listArea .user img,
+#ticketWatcherDlg .watcher img,
+#createMatchingTicketDlg .shoulder img{
+    width: 20px;
+    height: 20px;
+    border-radius: 10px;
+}
+
+.updateTicketTpl header{
+    background-color: inherit;
+    height: auto;
+    color: inherit;
+}
+
+.updateTicketTpl .step{
+    position: relative;
+}
+
+.updateTicketTpl .stepContent{
+    position: absolute;
+    top: 40px;
+    left: 0;
+    border: 1px solid #333;
+    background-color: #fff;
+    z-index: 1;
+}
+
+.updateTicketTpl .playTitle .stepContent select{
+    margin: 0;
+}
+
+.updateTicketTpl .progressRate input{
+    width: 45px;
+    display: inline-block;
+    height: 1.5em;
+    padding: 0.25em;
+    margin: 0;
+    background-color: #fff;
+}
+
+.updateTicketTpl .progressRate .btnWrap{
+    position: relative;
+    width: 8px;
+    display: inline-block;
+    height: 21px;
+    vertical-align: middle;
+}
+
+.updateTicketTpl .progressRate .up1{
+    width: 8px;
+    height: 8px;
+    position: absolute;
+    top: 0;
+    background-color: #f08a24;
+    padding: 0;
+    margin: 0;
+}
+
+.updateTicketTpl .progressRate .down1{
+    width: 8px;
+    height: 8px;
+    position: absolute;
+    bottom: 0;
+    background-color: #f08a24;
+    padding: 0;
+    margin: 0;
+}
+
+.updateTicketTpl .progressRate .up10{
+    width: 8px;
+    height: 8px;
+    position: absolute;
+    top: 0;
+    background-color: #cf6e0e;
+    padding: 0;
+    margin: 0;
+}
+
+.updateTicketTpl .progressRate .down10{
+    width: 8px;
+    height: 8px;
+    position: absolute;
+    bottom: 0;
+    background-color: #cf6e0e;
+    padding: 0;
+    margin: 0;
+}
+
+.updateTicketTpl .title textarea{
+    min-height: 0px;
+    padding: 0;
+    line-height: 1.5em;
+    border: 1px solid #fff;
+    box-shadow: 0px 0px;
+    background-color: #fff;
+}
+
+.updateTicketTpl .title textarea.edit,
+.updateTicketTpl .title textarea:focus{
+    border: 1px solid #1798A5;
+}
+
+/*
+マッチングチケット
+ */
+#updateMatchingTicketTpl header{
+    font-size: 0;
+    line-height: 0;
+}
+
+#updateMatchingTicketTpl .opponent .img{
+    position: relative;
+}
+
+#updateMatchingTicketTpl .opponent .img img,
+#ticketResultDlg .winner img{
+    width: 40px;
+    height: 40px;
+    border-radius: 20px;
+}
+
+#updateMatchingTicketTpl .opponent img.loader{
+    width: 20px;
+    height: 20px;
+    border-radius: 0;
+}
+
+/*
+マッチングチケット（新規作成）
+ */
+#updateMatchingTicketTpl .history li{
+    border-top: 1px solid #333;
+}
+
+

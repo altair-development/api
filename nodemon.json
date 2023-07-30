@@ -1,0 +1,11 @@
+{
+    "ext": "js,json,css,gitignore,pug",
+    "delay": "60000",
+    "watch": [
+        "."
+     ],
+     "ignore": [
+         ".sh",
+         "node_modules"
+     ]
+}

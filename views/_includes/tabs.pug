@@ -1,0 +1,13 @@
+- let i = 0;
+each params, controller in constant.tabs
+    -let tabName = 'tabs' + ++i;
+    nav(id=tabName)
+        ul
+            each param in params
+                li
+                    -
+                        let url = [
+                            '#' + constant.CNTR + constant.SEPARATOR2 + controller,
+                            constant.ACTN + constant.SEPARATOR2 + param.action
+                        ].join(constant.SEPARATOR1);
+                    a(href=url, tab_id=param.action) #{param.name}

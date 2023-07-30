@@ -1,0 +1,16 @@
+section#createProjectDlg.hide
+    include ../error
+    label プロジェクト名
+    input(type='text' name='name' id='')
+    label 開始日
+    input.datepick_start(type='text' name='start_date' id='')
+    label 終了日
+    input.datepick_end(type='text' name='end_date' id='')
+    include ../ticket/searchMixins
+    +loadSearch('watcher', 'Watcher', 'ウォッチャー', null, true)
+    section.submitArea
+        button.submit(type='button')
+            span.text 作成
+            include ../loader
+        button.cancel(type='button')
+            span.text キャンセル

@@ -1,0 +1,12 @@
+mixin loadSearch(clss, search_id, label, createBtn)
+    section(class=clss, search_id=search_id)
+        p #{label}
+        p
+            a.inputSearchArea(href='javascript:void(0);') #{label}を追加
+        include ../loader
+        include ../error
+        include ../searchAreaMixins
+        +loadSearchArea(createBtn ? createBtn : false)
+        section.searchAreaResult
+            ul.clearfix
+            img.loader(src=constant.img_path + 'circular_20x20.gif' alt='更新中')

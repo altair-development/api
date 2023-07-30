@@ -1,0 +1,9 @@
+nav#clanTabs
+    ul
+        each param, name in constant.clan_tabs
+            li
+                - let qParam = param.actions.join('&');
+                if qParam.length > 0
+                        a(href='#clan&tabclan&' + name + '&' + qParam tab_id='clan')
+                else
+                        a(href='#clan&tabclan&' + name tab_id='clan')
