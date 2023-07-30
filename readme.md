@@ -8,13 +8,13 @@ MongoDBサーバーに接続しアカウントやタスク情報の更新を行�
 
 ## How to use
 まず最初に下記のコマンドを実行しaltairレポジトリをクローンします。  
-※下記手順を実施する前に[altair/docker](../docker)のリソースを使って各種サーバーが起動していることを確認してください。
+※下記手順を実施する前に[altair/docker](https://github.com/altair-development/docker)のリソースを使って各種サーバーが起動していることを確認してください。
 ```
-git clone https://github.com/joey23008/altair.git
+git clone https://github.com/altair-development/api.git
 ```
 次にapiフォルダに移動します。
 ```
-cd altair/api
+cd api
 ```
 モジュールの実行に必要なnpmライブラリをインストールします。
 ```
